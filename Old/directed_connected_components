@@ -1,0 +1,19 @@
+
+import numpy
+import scipy
+#from scipy import sparse
+#from numpy import array
+
+
+
+# H directed graph
+def list_directed_cc (H)
+    adj_list = H.adjacencyList(useWeights=False)
+    i_indices, j_indices = zip(*adj_list)
+    adj_matrix = scipy.sparse.coo_matrix((np.ones(number_of_nodes),(i_indices, j_indices)))
+    
+    #scipy.sparse.csgraph.connected_components(csgraph, directed=True, connection='weak', return_labels=True)
+    list_cc = scipy.sparse.csgraph.connected_components(adj_matrix, directed=True, connection='weak', return_labels=True)
+    print(" All cc: ", list_cc)
+
+    return list_cc
